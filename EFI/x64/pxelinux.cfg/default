@@ -1,0 +1,65 @@
+# text mode menu
+UI menu.c32
+DEFAULT Clonezilla-AutoDeploy
+
+# graphical menu
+#UI vesamenu.c32
+NOESCAPE 1
+TIMEOUT 300
+PROMPT 0
+
+
+#MENU BACKGROUND background.png
+# MENU COLOR UNSEL 7;32;41 #c0000090 #00000000
+# MENU COLOR TIMEOUT_MSG 7;32;41 #c0000090 #00000000
+# MENU COLOR TIMEOUT 7;32;41 #c0000090 #00000000
+# MENU COLOR HELP 7;32;41 #c0000090 #00000000
+MENU WIDTH 80
+MENU MARGIN 5
+MENU PASSWORDMARGIN 3
+MENU ROWS 12
+MENU TABMSGROW 18
+MENU CMDLINEROW 18
+MENU ENDROW 24
+MENU PASSWORDROW 11
+MENU TIMEOUTROW 20
+MENU NOSAVE
+
+
+# Allow client to edit the parameters
+ALLOWOPTIONS 0
+
+MENU TITLE Devaine AutoDeploy
+
+# lock menu
+#MENU MASTER PASSWD $4$1oJ4S3Jg$gdfsgswfsdfdsfdsfsfsfdsfdsfdsf$
+
+LABEL Clonezilla-AutoDeploy
+  MENU DEFAULT
+  MENU LABEL Clonezilla AutoDeploy
+  MENU PASSWD $4$1oJ4S3Jg$gdfsgswfsdfdsfdsfsfsfdsfdsfdsf$
+  KERNEL images/CloneZilla/live/vmlinuz
+  APPEND initrd=images/CloneZilla/live/initrd.img boot=live username=user union=overlay config components noswap edd=on nomodeset nodmraid locales=en_US.UTF-8 keyboard-layouts=us ocs_live_run="ocs-sr -g auto -e1 auto -e2 -r -j2 -c -k1 -scr -icds -p reboot restoredisk ask_user ask_user" ocs_live_extra_param="" ocs_repository="smb://partimag:password,domain=devainecz@192.168.1.42/partimag/" ocs_live_batch=no net.ifnames=0 nosplash noprompt netboot=nfs nfsroot=192.168.1.1:/mnt/datastore1/PXE-Server/images/CloneZilla
+
+LABEL Clonezilla
+  MENU DEFAULT
+  MENU LABEL Clonezilla
+  MENU PASSWD $4$1oJ4S3Jg$gdfsgswfsdfdsfdsfsfsfdsfdsfdsf$
+  KERNEL images/CloneZilla/live/vmlinuz
+  APPEND initrd=images/CloneZilla/live/initrd.img boot=live username=user union=overlay config components noswap edd=on nomodeset nodmraid locales=en_US.UTF-8 keyboard-layouts=us ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_repository="smb://partimag:password,domain=devainecz@192.168.1.1/partimag/" ocs_live_batch=no net.ifnames=0 nosplash noprompt netboot=nfs nfsroot=192.168.1.1:/mnt/datastore1/PXE-Server/images/CloneZilla
+  
+LABEL Memtest-x86_64
+#  MENU PASSWD $4$1oJ4S3Jg$gdfsgswfsdfdsfdsfsfsfdsfdsfdsf$
+  MENU LABEL Memtest-x86_64
+  KERNEL images/memtest/mt86+x64.efi
+  
+LABEL Memtest-32bit
+#  MENU PASSWD $4$1oJ4S3Jg$gdfsgswfsdfdsfdsfsfsfdsfdsfdsf$
+  MENU LABEL Memtest-32bit
+  KERNEL images/memtest/mt86+x32.efi
+  
+label FreeDOS
+  MENU LABEL FreeDOS
+  # MENU PASSWD
+  KERNEL images/memdisk
+  APPEND initrd=images/Freedos/freedos.img
