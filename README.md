@@ -43,7 +43,7 @@ https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/sysli
 
 shimx64.efi is bootx64.efi from Clonezilla (CloneZilla/EFI/boot/bootx64.efi)
 
-# other files
+## other files
 
 ipxe.efi - just for test boot via http, there is no settings about it at this time
 
