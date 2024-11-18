@@ -3,8 +3,9 @@
 Example of PXE Server to automatically deploy clonezilla images via network with Secure Boot support
 
 Boot steps are
-
+```
 UEFI SB Enabled -> PXE ipv4 boot -> Shim -> Grub -> CloneZilla kernel
+```
 
 ## Deploy/Configure PXE Server
 1) create image directory and symlinks
