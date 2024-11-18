@@ -48,3 +48,18 @@ shimx64.efi is bootx64.efi from Clonezilla (CloneZilla/EFI/boot/bootx64.efi)
 ipxe.efi - just for test boot via http, there is no settings about it at this time
 
 wimboot - just for test booting win image directly, there is no settings about it at this time
+
+# Configuration
+
+All configs are in the /srv/PXE-Server/grub/grub.cfg
+
+# Workarounds
+
+1) live-netdev="eth0"
+
+This eliminate problems with Thinkpad X13 and LTE modem. Clonezilla tries LTE interface instead of eth interface from time to time
+
+2) ocs_postrun1="sleep 20" ocs_postrun2="echo b > /proc/sysrq-trigger"
+
+Force restart PC after clonning done. Sometimes Clonezilla freeze in restarting process on Thinkpad X13 and other devices. So, we will wait 20s (to be sure that all io writes are done) and then we will run sysrq to force restart.
+
