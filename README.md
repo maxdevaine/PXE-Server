@@ -61,7 +61,7 @@ This eliminate problems with Thinkpad X13 and LTE modem. Clonezilla tries LTE in
 live-netdev="eth0"
 ```
 
-Force restart PC after is clonning done. Sometimes Clonezilla freezes in restarting process on Thinkpad X13 and other devices. So, we will wait 20s (to be sure that all io writes are done) and then we will run sysrq to force restart.
+Force restart PC after clonning. Sometimes Clonezilla freezes in restarting process on Thinkpad X13 and other devices. So, we will wait 20s (to be sure that all io writes are done) and then we will run sysrq to force restart.
 ```
 ocs_postrun1="sleep 20" ocs_postrun2="echo b > /proc/sysrq-trigger"
 ```
